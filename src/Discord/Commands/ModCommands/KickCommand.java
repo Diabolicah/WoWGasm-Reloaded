@@ -5,7 +5,6 @@ import Discord.Core.ConfigFile;
 import Discord.Core.Logging.EnumLogType;
 import Discord.Core.Logging.LoggingUtil;
 import Discord.Core.MainDiscordBot;
-import Discord.Twitter.TwitterHandle;
 import DiscordBotCode.CommandFiles.DiscordCommand;
 import DiscordBotCode.Main.ChatUtils;
 import DiscordBotCode.Main.DiscordBotBase;
@@ -72,7 +71,6 @@ public class KickCommand extends ModeratorCommand
 			RequestBuffer.request(() -> {
 				try {
 					message.getGuild().kickUser(user);
-					TwitterHandle.removeUser(user);
 				} catch (DiscordException | MissingPermissionsException e) {
 					DiscordBotBase.discordBotBase.handleException(e);
 				}
