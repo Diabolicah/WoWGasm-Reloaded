@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Gigawhore build" default="build" basedir=".">
+    <property name="version.file" location="${basedir}/build.properties"/>
+    <property file="${basedir}/build.properties"/>
+
+    <target name="build" unless="no.increment.build">
+        <propertyfile file="${version.file}">
+            <entry key="version_minor" default="0" operation="=" type="int"/>
+            <entry key="version_major" default="1" operation="=" type="int"/>
+            <entry key="version_build" default="0" operation="+" type="int"/>
+        </propertyfile>
+    </target>
+
+    <target name="minor" unless="no.increment.minor">
+        <propertyfile file="${version.file}">
+            <entry key="version_minor" default="0" operation="+" type="int"/>
+            <entry key="version_major" default="1" operation="=" type="int"/>
+            <entry key="version_build" value="0" operation="=" type="int"/>
+        </propertyfile>
+    </target>
+    <target name="major">
+        <property name="no.increment.minor" value="true"/>
+        <property name="no.increment.build" value="true"/>
+        <propertyfile file="${version.file}">
+            <entry key="version_minor" value="0" operation="=" type="int"/>
+            <entry key="version_major" default="1" operation="+" type="int"/>
+            <entry key="version_build" value="0" operation="=" type="int"/>
+        </propertyfile>
+    </target>
+</project>
