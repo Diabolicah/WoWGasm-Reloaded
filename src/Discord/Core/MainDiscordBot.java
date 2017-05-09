@@ -96,11 +96,11 @@ public class MainDiscordBot
 	public static IGuild[] guildList;
 	
 	public static void init(){
-		guildID = DiscordBotBase.debug ? "292732825474695168" : "259028003877552139";
+		guildID = "309224369085743114";
 		command_prefix = ConfigFile.getValueOrDefault("command_prefix", command_prefix);
 		
 		guild = DiscordBotBase.discordClient.getGuildByID(guildID);
-		defaultRole = DiscordBotBase.discordClient.getRoleByID("299132024592138240");
+		defaultRole = DiscordBotBase.discordClient.getRoleByID("311285900556369920");
 		
 		ChannelUtils.loadChannels(guild);
 		
